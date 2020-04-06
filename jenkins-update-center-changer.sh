@@ -53,7 +53,7 @@ END
 }
 
 backupUpdateCenterConfig() {
-    cp hudson.model.UpdateCenter.xml hudson.model.UpdateCenter.xml.back
+    cp $JENKINS_HOME/hudson.model.UpdateCenter.xml $JENKINS_HOME/hudson.model.UpdateCenter.xml.back
 
     if [ -f $JENKINS_HOME/hudson.model.UpdateCenter.xml.back ]; then
         echo "备份插件更新中心配置文件成功。"
@@ -61,7 +61,7 @@ backupUpdateCenterConfig() {
 }
 
 modifyUpdateCenterConfig() {
-    sed -i 's/<url.*url>/<url>https:\/\/updates.jenkins-zh.cn\/update-center.json<\/url>/g' hudson.model.UpdateCenter.xml
+    sed -i 's/<url.*url>/<url>https:\/\/updates.jenkins-zh.cn\/update-center.json<\/url>/g' $JENKINS_HOME/hudson.model.UpdateCenter.xml
     echo "修改插件中心配置成功！"
 }
 
